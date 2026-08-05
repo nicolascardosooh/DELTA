@@ -1,118 +1,131 @@
 "use client";
-import { motion } from "framer-motion";
-import CarouselSection from "@/components/CarrosselSection";
+
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import HeroSectionDelta from "@/components/A-DELTA-Components/HeroSection";
-import Valores from "@/components/A-DELTA-Components/Valores";
-import CarouselImages from "@/components/A-DELTA-Components/CarrouselImages";
 import Footer from "@/components/Footer";
+import { FaHandshake, FaBalanceScale, FaCheckCircle, FaLightbulb } from "react-icons/fa";
+import { primaryWhatsApp } from "@/lib/site";
 
-export default function Home() {
-  // Animation variants
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
+const valores = [
+  {
+    icon: FaHandshake,
+    title: "Comprometimento",
+    description:
+      "Atendimento especializado, esclarecendo benefícios e eventuais riscos de cada serviço, sempre valorizando os interesses do cliente.",
+  },
+  {
+    icon: FaBalanceScale,
+    title: "Ética",
+    description:
+      "Processos transparentes em cada etapa do trabalho e na relação com o cliente.",
+  },
+  {
+    icon: FaCheckCircle,
+    title: "Qualidade",
+    description:
+      "Dedicação da equipe, atualização constante e experiência nas diferentes áreas da contabilidade e da consultoria empresarial.",
+  },
+  {
+    icon: FaLightbulb,
+    title: "Inovação",
+    description:
+      "Soluções práticas e eficientes, amparadas na experiência dos nossos profissionais.",
+  },
+];
 
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+const gallery = [
+  { src: "/images/fundo2.jpg", alt: "Estrutura Delta" },
+  { src: "/images/fundohd.webp", alt: "Ambiente Delta" },
+  { src: "/images/fundofinancas.jpg", alt: "Serviços Delta" },
+];
 
+export default function ADeltaPage() {
   return (
-    <>
-      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 text-gray-900">
-        {/* Fixed Navbar */}
-        <Navbar />
+    <div className="min-h-screen bg-white">
+      <Navbar />
 
-        {/* Main Content */}
-        <motion.main
-          initial="initial"
-          animate="animate"
-          variants={stagger}
-          className="relative min-h-screen"
-        >
-          {/* Hero Section */}
-          <section className="relative pt-32 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute inset-0 opacity-[0.03]" style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, #1e4493 1px, transparent 0)`,
-                backgroundSize: '40px 40px'
-              }} />
-            </div>
+      <main>
+        <section className="border-b border-slate-100 bg-slate-50 pt-32 pb-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-azul-delta">
+              Empresa
+            </p>
+            <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              Atuando entre os líderes do segmento em Triunfo e região.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
+              A Delta é um braço forte para a gestão contábil do seu negócio — com
+              atendimento presencial e online, foco em clareza e conformidade.
+            </p>
+          </div>
+        </section>
 
-            <div className="max-w-7xl mx-auto">
-              <motion.div
-                variants={fadeInUp}
-                className="text-center md:text-left md:max-w-3xl"
-              >
-                <h1 className="inline-block text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-800 to-sky-600 mb-4">
-                  A DELTA
-                </h1>
-                <p className="text-2xl md:text-4xl font-light text-sky-900 leading-relaxed">
-                  Atuando entre os líderes do segmento em{" "}
-                  <span className="font-semibold text-sky-900 relative inline-block after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-sky-900/20">
-                    Triunfo
-                  </span>{" "}
-                  e{" "}
-                  <span className="font-semibold text-sky-900 relative inline-block after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-sky-900/20">
-                    General Câmara
-                  </span>.
+        <section className="py-16 sm:py-20">
+          <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:grid-cols-3 sm:px-6 lg:px-8">
+            {gallery.map((img) => (
+              <div key={img.src} className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+                <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="(max-width:768px) 100vw, 33vw" />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-azul-delta py-16 text-white sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+              <div>
+                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Conte com a Delta na gestão da sua empresa.
+                </h2>
+                <p className="mt-4 text-white/80 leading-relaxed">
+                  Contabilidade, fiscal, folha e consultoria — com linguagem clara e
+                  acompanhamento próximo.
                 </p>
-              </motion.div>
+                <a
+                  href={primaryWhatsApp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 inline-flex bg-white px-7 py-3 text-sm font-semibold text-azul-delta transition hover:bg-slate-100"
+                >
+                  Falar com a equipe
+                </a>
+              </div>
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { n: "15+", t: "Anos de experiência" },
+                  { n: "500+", t: "Clientes atendidos" },
+                  { n: "98%", t: "Satisfação" },
+                  { n: "1000+", t: "Projetos concluídos" },
+                ].map((s) => (
+                  <div key={s.t} className="border border-white/20 p-5">
+                    <p className="text-3xl font-bold">{s.n}</p>
+                    <p className="mt-1 text-sm text-white/70">{s.t}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Carousel Section */}
-          <motion.section
-            variants={fadeInUp}
-            className="relative w-full bg-gradient-to-b from-sky-900 to-sky-950"
-          >
-            <div className="absolute inset-0 opacity-75 mix-blend-overlay">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-                backgroundSize: '40px 40px'
-              }} />
+        <section className="py-16 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="mb-12 max-w-2xl text-3xl font-semibold tracking-tight text-slate-900">
+              Valores que norteiam nossa equipe
+            </h2>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {valores.map((v) => (
+                <div key={v.title} className="border-t-2 border-azul-delta pt-6">
+                  <v.icon className="mb-4 h-6 w-6 text-azul-delta" />
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900">{v.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-600">{v.description}</p>
+                </div>
+              ))}
             </div>
-            <CarouselSection />
-          </motion.section>
+          </div>
+        </section>
+      </main>
 
-          {/* Hero Section Delta */}
-          <motion.section
-            variants={fadeInUp}
-            className="relative w-full bg-sky-900"
-          >
-            <HeroSectionDelta />
-          </motion.section>
-
-          {/* Valores Section */}
-          <motion.section
-            variants={fadeInUp}
-            className="relative w-full bg-gradient-to-b from-sky-50 to-white"
-          >
-            <Valores />
-          </motion.section>
-
-          {/* Carousel Images */}
-          <motion.section
-            variants={fadeInUp}
-            className="relative w-full bg-gradient-to-b from-white to-sky-50"
-          >
-            <CarouselImages />
-          </motion.section>
-        </motion.main>
-
-        {/* Decorative Elements */}
-        <div className="fixed top-1/4 right-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="fixed bottom-1/4 left-0 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
-
-        {/* Footer */}
-        <Footer />
-      </div>
-    </>
+      <Footer />
+    </div>
   );
 }

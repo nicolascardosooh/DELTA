@@ -1,25 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import 'swiper/css';
-import 'swiper/css/effect-cube';
-import 'swiper/css/pagination';
-import "swiper/css";
-import "swiper/css/navigation";
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { primaryWhatsApp, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Delta"
+  title: {
+    default: `${site.fullName} | Contabilidade em Triunfo/RS`,
+    template: `%s | ${site.fullName}`,
+  },
+  description:
+    "Assessoria contábil completa em Triunfo/RS. Atendimento presencial e online. Contabilidade, fiscal, folha e consultoria.",
 };
 
 export default function RootLayout({
@@ -28,25 +17,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-        <head>
-        {/* Adiciona o CDN do Swiper */}
-        <link
-          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-          rel="stylesheet"
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="pt-BR">
+      <body className="antialiased font-sans">
         {children}
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <a
-          href="https://wa.me/555192096630" // Substitua pelo número de telefone desejado
+          href={primaryWhatsApp}
           target="_blank"
+          rel="noopener noreferrer"
           className="whatsapp-button"
+          aria-label="Falar no WhatsApp"
         >
-          <img src="/wpp.png" alt="WhatsApp" className="w-16 h-16 bg-green-500" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/wpp.png" alt="WhatsApp" />
         </a>
       </body>
     </html>

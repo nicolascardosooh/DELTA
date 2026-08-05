@@ -1,171 +1,147 @@
-"use client";
-import { 
-  FaPhone, 
-  FaWhatsapp, 
-  FaEnvelope, 
-  FaMapMarkerAlt, 
-  FaFacebookF, 
-  FaLinkedinIn, 
+import Image from "next/image";
+import Link from "next/link";
+import {
+  FaPhone,
+  FaWhatsapp,
+  FaEnvelope,
+  FaMapMarkerAlt,
   FaInstagram,
-  FaClock
-} from 'react-icons/fa';
-import GoogleMaps from "./GoogleMaps";
-import Image from 'next/image';
-import Link from 'next/link';
+  FaClock,
+} from "react-icons/fa";
+import { site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-gray-900 via-gray-900 to-black text-white mt-50">
-      {/* Wave SVG */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform translate-y-[-95%]">
-        <svg className="relative block w-full h-[50px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-                className="fill-gray-900"></path>
-        </svg>
-      </div>
-
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <Image 
-                src="/images/logo M F.jpg" 
-                alt="Delta Logo" 
-                width={50} 
-                height={50}
-                className="rounded-full"
+    <footer className="bg-azul-delta text-white">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/logodelta.png"
+                alt={site.fullName}
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-full bg-white object-contain p-0.5"
               />
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent">
-                DELTA
-              </h3>
+              <div>
+                <p className="text-lg font-semibold tracking-wide">DELTA</p>
+                <p className="text-xs text-white/70">Assessoria Contábil</p>
+              </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-            Escritório de Contabilidade Atendimento Presencial e Online Seg. à Sex. 8 as 17h
+            <p className="text-sm leading-relaxed text-white/75">
+              Escritório de contabilidade com atendimento presencial e online.
+              {` ${site.hours}.`}
             </p>
-            {/* Social Media */}
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-600 transition-colors">
-                <FaFacebookF className="text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-600 transition-colors">
-                <FaLinkedinIn className="text-white" />
-              </a>
-              <a href="https://www.instagram.com/deltarscontabilidade/" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-600 transition-colors">
-                <FaInstagram className="text-white" />
-              </a>
-            </div>
+            <a
+              href={site.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition hover:bg-white/10"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-semibold mb-6 text-sky-400">Links Rápidos</h4>
-            <ul className="space-y-3">
-                <li>
-                  <Link 
-                    href={""}
-                    className="text-gray-400 hover:text-sky-400 transition-colors flex items-center space-x-2"
-                  >
-                    <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
-                    <span>Home</span>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
+              Links
+            </h4>
+            <ul className="space-y-2.5 text-sm text-white/75">
+              {site.nav.slice(0, 5).map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="transition hover:text-white">
+                    {item.name}
                   </Link>
                 </li>
-                <li>
-                  <Link 
-                    href={"A-DELTA"}
-                    className="text-gray-400 hover:text-sky-400 transition-colors flex items-center space-x-2"
-                  >
-                    <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
-                    <span>A Delta</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href={"Clientes"}
-                    className="text-gray-400 hover:text-sky-400 transition-colors flex items-center space-x-2"
-                  >
-                    <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
-                    <span>Clientes</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href={"Servicos"}
-                    className="text-gray-400 hover:text-sky-400 transition-colors flex items-center space-x-2"
-                  >
-                    <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
-                    <span>Serviços</span>
-                  </Link>
-                </li>
-              
-                
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-xl font-semibold mb-6 text-sky-400">Contatos</h4>
-            <ul className="space-y-4">
-              <li className="flex items-center space-x-3 text-gray-400 hover:text-green-400 transition-colors">
-                <FaWhatsapp className="text-green-400" />
-                <a href="https://wa.me/5551992624198" target="_blank" rel="noopener noreferrer">
-                 Triunfo +55 (51) 99262-4198
-                </a>
-              </li>
-              <li className="flex items-center space-x-3 text-gray-400 hover:text-green-400 transition-colors">
-                <FaWhatsapp className="text-green-400" />
-                <a href="https://wa.me/5551993686435" target="_blank" rel="noopener noreferrer">
-                  Gen. Câmara +55 (51) 99368-6435
-                </a>
-              </li>
-              <li className="flex items-center space-x-3 text-gray-400 hover:text-sky-400 transition-colors">
-                <FaEnvelope className="text-sky-400" />
-                <a href="mailto:email">email@delta.com</a>
-              </li>
-              <li className="flex items-center space-x-3 text-gray-400">
-                <FaClock className="text-sky-400" />
-                <span>Seg - Sex: 8:00 - 18:00</span>
+              ))}
+              <li>
+                <Link href="/politica-de-privacidade" className="transition hover:text-white">
+                  Política de Privacidade
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Location */}
           <div>
-            <h4 className="text-xl font-semibold mb-6 text-sky-400">Localização</h4>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3 text-gray-400">
-                <FaMapMarkerAlt className="text-sky-400 mt-1 flex-shrink-0" />
-                <address className="not-italic">
-                  BR-386, km 411 - Vendilhão,<br />
-                  Triunfo - RS, 95780-000
-                </address>
-              </div>
-              <div className="flex items-start space-x-3 text-gray-400">
-                <FaMapMarkerAlt className="text-sky-400 mt-1 flex-shrink-0" />
-                <address className="not-italic">
-                R. Visc. de Itaboraí, 359,<br />
-                Gen. Câmara, RS, 95820-000
-                </address>
-              </div>
-              <div className="h-48 rounded-lg overflow-hidden">
-                <GoogleMaps />
-              </div>
-            </div>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
+              Contato
+            </h4>
+            <ul className="space-y-3 text-sm text-white/75">
+              <li>
+                <a
+                  href={site.phone.href}
+                  className="inline-flex items-center gap-2.5 transition hover:text-white"
+                >
+                  <FaPhone className="shrink-0 opacity-80" />
+                  {site.phone.display}
+                </a>
+              </li>
+              {site.whatsapp.map((w) => (
+                <li key={w.href}>
+                  <a
+                    href={w.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 transition hover:text-white"
+                  >
+                    <FaWhatsapp className="shrink-0 opacity-80" />
+                    {w.display}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a
+                  href={site.email.href}
+                  className="inline-flex items-center gap-2.5 transition hover:text-white"
+                >
+                  <FaEnvelope className="shrink-0 opacity-80" />
+                  {site.email.display}
+                </a>
+              </li>
+              <li className="inline-flex items-center gap-2.5">
+                <FaClock className="shrink-0 opacity-80" />
+                {site.hours}
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
+              Localização
+            </h4>
+            <a
+              href={site.address.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-2.5 text-sm text-white/75 transition hover:text-white"
+            >
+              <FaMapMarkerAlt className="mt-0.5 shrink-0 opacity-80" />
+              <address className="not-italic">
+                {site.address.line1}
+                <br />
+                {site.address.line2}
+              </address>
+            </a>
+            <p className="mt-4 text-xs text-white/55">
+              {site.legalName}
+              <br />
+              CNPJ {site.cnpj}
+            </p>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} Delta. Todos os direitos reservados.
-            </p>
-            <div className="flex space-x-6 text-sm text-gray-400">
-              <p className="hover:text-sky-400 transition-colors">Política de Privacidade</p>
-              <p className="hover:text-sky-400 transition-colors">Termos de Uso</p>
-            </div>
-          </div>
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/15 pt-8 text-sm text-white/60 sm:flex-row">
+          <p>
+            &copy; {new Date().getFullYear()} {site.name}. Todos os direitos reservados.
+          </p>
+          <Link
+            href="/politica-de-privacidade"
+            className="transition hover:text-white"
+          >
+            Política de Privacidade
+          </Link>
         </div>
       </div>
     </footer>
