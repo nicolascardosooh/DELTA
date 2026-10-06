@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { primaryWhatsApp, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export default function HeroSection() {
   return (
@@ -12,45 +12,65 @@ export default function HeroSection() {
         src="/images/fundoHDDELTA.webp"
         alt=""
         fill
-        className="object-cover"
+        className="object-cover scale-105"
         priority
         quality={90}
       />
-      <div className="absolute inset-0 bg-azul-delta/75" />
-      <div className="absolute inset-0 bg-gradient-to-b from-azul-delta/40 via-transparent to-azul-delta/90" />
+      <div className="absolute inset-0 bg-[#0a1f4d]/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-azul-delta via-azul-delta/50 to-transparent" />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 pb-24 pt-28 sm:px-6 lg:px-8">
+      {/* Brand watermark — Delta signature */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-8 bottom-0 select-none font-display text-[28vw] font-bold leading-none tracking-tighter text-white/[0.04] sm:text-[22vw]"
+      >
+        Δ
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:justify-center sm:px-6 sm:pb-24 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="max-w-3xl"
         >
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-white/80">
-            Assessoria Contábil
-          </p>
-          <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+          <p className="mb-5 font-display text-sm font-semibold tracking-[0.35em] text-white">
             DELTA
+          </p>
+          <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-[3.75rem]">
+            {site.heroTitle}
           </h1>
-          <p className="mb-10 max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl">
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
             {site.tagline}
           </p>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={primaryWhatsApp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-white px-7 py-3 text-sm font-semibold text-azul-delta transition hover:bg-slate-100"
-            >
-              Fale conosco
-            </a>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
-              href="/Servicos"
-              className="inline-flex items-center border border-white/50 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              href="/Contato"
+              className="bg-white px-7 py-3.5 text-sm font-semibold text-azul-delta transition hover:bg-delta-mist"
             >
-              Nossas soluções
+              Quero ser cliente
             </Link>
+            <a
+              href="#servicos"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-white/90"
+            >
+              Ver soluções
+              <span className="transition group-hover:translate-x-1">→</span>
+            </a>
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-14 hidden items-center gap-8 border-t border-white/15 pt-6 text-xs uppercase tracking-[0.16em] text-white/55 sm:flex"
+        >
+          <span>Triunfo · RS</span>
+          <span className="h-px w-8 bg-white/25" />
+          <span>Presencial e online</span>
+          <span className="h-px w-8 bg-white/25" />
+          <span>{site.hours.replace("Segunda a Sexta: ", "")}</span>
         </motion.div>
       </div>
     </section>

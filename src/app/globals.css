@@ -1,11 +1,15 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@500;600;700&display=swap");
 
 @theme {
-  --font-sans: "Montserrat", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
   --color-azul-delta: #1e4493;
   --color-azul-delta-dark: #163570;
   --color-azul-delta-light: #2a56b0;
+  --color-delta-ink: #0f172a;
+  --color-delta-mute: #64748b;
+  --color-delta-mist: #f4f6f9;
 }
 
 html {
@@ -13,10 +17,14 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  color: #1e293b;
+  font-family: "DM Sans", sans-serif;
+  color: #0f172a;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
 }
 
 .whatsapp-button {
@@ -24,51 +32,42 @@ body {
   bottom: 24px;
   right: 24px;
   z-index: 1000;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.95;
 }
 
 .whatsapp-button:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  opacity: 1;
 }
 
 .whatsapp-button img {
   border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  box-shadow: 0 4px 14px rgba(30, 68, 147, 0.25);
+  width: 52px;
+  height: 52px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #1e4493;
-  border-radius: 4px;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 body.menu-open {
   overflow: hidden;
 }
 
-@keyframes fadeInUp {
+@keyframes fade-rise {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -76,6 +75,6 @@ body.menu-open {
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.7s ease-out;
+.animate-fade-rise {
+  animation: fade-rise 0.65s ease-out both;
 }

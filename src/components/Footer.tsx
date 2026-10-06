@@ -1,43 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FaPhone,
-  FaWhatsapp,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaInstagram,
-  FaClock,
-} from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-azul-delta text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-4">
+    <footer className="bg-[#0a1f4d] text-white">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-12 border-b border-white/10 pb-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+          <div>
             <div className="flex items-center gap-3">
               <Image
                 src="/images/logodelta.png"
                 alt={site.fullName}
-                width={44}
-                height={44}
-                className="h-11 w-11 rounded-full bg-white object-contain p-0.5"
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-full bg-white object-contain p-0.5"
               />
               <div>
-                <p className="text-lg font-semibold tracking-wide">DELTA</p>
-                <p className="text-xs text-white/70">Assessoria Contábil</p>
+                <p className="font-display text-lg font-semibold tracking-[0.14em]">DELTA</p>
+                <p className="text-[11px] text-white/50">Assessoria Contábil</p>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-white/75">
-              Escritório de contabilidade com atendimento presencial e online.
-              {` ${site.hours}.`}
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
+              Contabilidade com precisão e atendimento próximo em Triunfo/RS.
             </p>
             <a
               href={site.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition hover:bg-white/10"
+              className="mt-6 inline-flex h-9 w-9 items-center justify-center border border-white/20 text-white/80 transition hover:border-white/50 hover:text-white"
               aria-label="Instagram"
             >
               <FaInstagram />
@@ -45,103 +37,67 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
-              Links
-            </h4>
-            <ul className="space-y-2.5 text-sm text-white/75">
-              {site.nav.slice(0, 5).map((item) => (
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45">
+              Navegação
+            </p>
+            <ul className="space-y-2.5 text-sm text-white/70">
+              {site.nav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="transition hover:text-white">
+                  <Link href={item.href} className="hover:text-white">
                     {item.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/politica-de-privacidade" className="transition hover:text-white">
-                  Política de Privacidade
+                <Link href="/Trabalhe-Conosco" className="hover:text-white">
+                  Trabalhe conosco
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
-              Contato
-            </h4>
-            <ul className="space-y-3 text-sm text-white/75">
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45">
+              Legal
+            </p>
+            <ul className="space-y-2.5 text-sm text-white/70">
               <li>
-                <a
-                  href={site.phone.href}
-                  className="inline-flex items-center gap-2.5 transition hover:text-white"
-                >
-                  <FaPhone className="shrink-0 opacity-80" />
-                  {site.phone.display}
-                </a>
-              </li>
-              {site.whatsapp.map((w) => (
-                <li key={w.href}>
-                  <a
-                    href={w.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 transition hover:text-white"
-                  >
-                    <FaWhatsapp className="shrink-0 opacity-80" />
-                    {w.display}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  href={site.email.href}
-                  className="inline-flex items-center gap-2.5 transition hover:text-white"
-                >
-                  <FaEnvelope className="shrink-0 opacity-80" />
-                  {site.email.display}
-                </a>
-              </li>
-              <li className="inline-flex items-center gap-2.5">
-                <FaClock className="shrink-0 opacity-80" />
-                {site.hours}
+                <Link href="/politica-de-privacidade" className="hover:text-white">
+                  Privacidade
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
-              Localização
-            </h4>
-            <a
-              href={site.address.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-start gap-2.5 text-sm text-white/75 transition hover:text-white"
-            >
-              <FaMapMarkerAlt className="mt-0.5 shrink-0 opacity-80" />
-              <address className="not-italic">
-                {site.address.line1}
-                <br />
-                {site.address.line2}
-              </address>
-            </a>
-            <p className="mt-4 text-xs text-white/55">
-              {site.legalName}
-              <br />
-              CNPJ {site.cnpj}
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45">
+              Contato
             </p>
+            <ul className="space-y-2.5 text-sm text-white/70">
+              <li>{site.address.line1}</li>
+              <li>{site.address.line2}</li>
+              <li>
+                <a href={site.phone.href} className="hover:text-white">
+                  {site.phone.display}
+                </a>
+              </li>
+              <li>
+                <a href={site.email.href} className="hover:text-white">
+                  {site.email.display}
+                </a>
+              </li>
+              <li className="text-white/45">{site.hours}</li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/15 pt-8 text-sm text-white/60 sm:flex-row">
+        <div className="flex flex-col gap-3 pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {site.name}. Todos os direitos reservados.
           </p>
-          <Link
-            href="/politica-de-privacidade"
-            className="transition hover:text-white"
-          >
-            Política de Privacidade
-          </Link>
+          <p>
+            {site.legalName} · CNPJ {site.cnpj}
+          </p>
         </div>
       </div>
     </footer>

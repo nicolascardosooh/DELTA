@@ -1,130 +1,75 @@
-"use client";
-
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { FaHandshake, FaBalanceScale, FaCheckCircle, FaLightbulb } from "react-icons/fa";
-import { primaryWhatsApp } from "@/lib/site";
-
-const valores = [
-  {
-    icon: FaHandshake,
-    title: "Comprometimento",
-    description:
-      "Atendimento especializado, esclarecendo benefícios e eventuais riscos de cada serviço, sempre valorizando os interesses do cliente.",
-  },
-  {
-    icon: FaBalanceScale,
-    title: "Ética",
-    description:
-      "Processos transparentes em cada etapa do trabalho e na relação com o cliente.",
-  },
-  {
-    icon: FaCheckCircle,
-    title: "Qualidade",
-    description:
-      "Dedicação da equipe, atualização constante e experiência nas diferentes áreas da contabilidade e da consultoria empresarial.",
-  },
-  {
-    icon: FaLightbulb,
-    title: "Inovação",
-    description:
-      "Soluções práticas e eficientes, amparadas na experiência dos nossos profissionais.",
-  },
-];
-
-const gallery = [
-  { src: "/images/fundo2.jpg", alt: "Estrutura Delta" },
-  { src: "/images/fundohd.webp", alt: "Ambiente Delta" },
-  { src: "/images/fundofinancas.jpg", alt: "Serviços Delta" },
-];
+import { site } from "@/lib/site";
 
 export default function ADeltaPage() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-
       <main>
-        <section className="border-b border-slate-100 bg-slate-50 pt-32 pb-16">
+        <section className="border-b border-slate-200 bg-delta-mist pt-32 pb-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-azul-delta">
-              Empresa
+            <p className="font-display text-xs font-semibold tracking-[0.2em] text-azul-delta/60">
+              01 / A Delta
             </p>
-            <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Atuando entre os líderes do segmento em Triunfo e região.
+            <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold tracking-tight text-delta-ink sm:text-5xl">
+              Assessoria contábil com precisão e proximidade
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
-              A Delta é um braço forte para a gestão contábil do seu negócio — com
-              atendimento presencial e online, foco em clareza e conformidade.
-            </p>
+            <p className="mt-6 max-w-xl text-lg text-delta-mute">{site.tagline}</p>
           </div>
         </section>
 
-        <section className="py-16 sm:py-20">
-          <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:grid-cols-3 sm:px-6 lg:px-8">
-            {gallery.map((img) => (
-              <div key={img.src} className="relative aspect-[4/3] overflow-hidden bg-slate-100">
-                <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="(max-width:768px) 100vw, 33vw" />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-azul-delta py-16 text-white sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-              <div>
-                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Conte com a Delta na gestão da sua empresa.
-                </h2>
-                <p className="mt-4 text-white/80 leading-relaxed">
-                  Contabilidade, fiscal, folha e consultoria — com linguagem clara e
-                  acompanhamento próximo.
-                </p>
-                <a
-                  href={primaryWhatsApp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-flex bg-white px-7 py-3 text-sm font-semibold text-azul-delta transition hover:bg-slate-100"
-                >
-                  Falar com a equipe
-                </a>
-              </div>
-              <div className="grid grid-cols-2 gap-6">
-                {[
-                  { n: "15+", t: "Anos de experiência" },
-                  { n: "500+", t: "Clientes atendidos" },
-                  { n: "98%", t: "Satisfação" },
-                  { n: "1000+", t: "Projetos concluídos" },
-                ].map((s) => (
-                  <div key={s.t} className="border border-white/20 p-5">
-                    <p className="text-3xl font-bold">{s.n}</p>
-                    <p className="mt-1 text-sm text-white/70">{s.t}</p>
-                  </div>
-                ))}
-              </div>
+        <section className="py-20">
+          <div className="mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-2 lg:items-center sm:px-6 lg:px-8">
+            <div className="relative aspect-[4/3] overflow-hidden bg-delta-mist">
+              <Image
+                src="/images/fundo2.jpg"
+                alt="Delta"
+                fill
+                className="object-cover"
+                sizes="50vw"
+              />
+            </div>
+            <div>
+              <h2 className="font-display text-2xl font-semibold text-delta-ink sm:text-3xl">
+                Próximos o suficiente para entender o seu negócio
+              </h2>
+              <p className="mt-4 leading-relaxed text-delta-mute">
+                A {site.fullName} une rotina contábil bem feita e orientação clara — atendimento
+                presencial e online em Triunfo/RS.
+              </p>
+              <p className="mt-6 text-xs tracking-wide text-slate-400">
+                {site.legalName} · CNPJ {site.cnpj}
+              </p>
             </div>
           </div>
         </section>
 
-        <section className="py-16 sm:py-24">
+        <section className="bg-azul-delta py-20 text-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="mb-12 max-w-2xl text-3xl font-semibold tracking-tight text-slate-900">
-              Valores que norteiam nossa equipe
-            </h2>
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {valores.map((v) => (
-                <div key={v.title} className="border-t-2 border-azul-delta pt-6">
-                  <v.icon className="mb-4 h-6 w-6 text-azul-delta" />
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900">{v.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-600">{v.description}</p>
+            <h2 className="font-display text-2xl font-semibold sm:text-3xl">Nossa essência</h2>
+            <div className="mt-10 divide-y divide-white/15 border-y border-white/15">
+              {site.essence.map((item) => (
+                <div key={item.title} className="grid gap-3 py-7 md:grid-cols-[240px_1fr]">
+                  <h3 className="font-display font-semibold">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/75">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
-      </main>
 
+        <section className="py-16 text-center">
+          <Link
+            href="/Contato"
+            className="inline-flex bg-azul-delta px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-azul-delta-dark"
+          >
+            Quero ser cliente
+          </Link>
+        </section>
+      </main>
       <Footer />
     </div>
   );

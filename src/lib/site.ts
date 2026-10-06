@@ -3,7 +3,9 @@ export const site = {
   fullName: "Delta Assessoria Contábil",
   legalName: "DELTA SERVICOS CONTABEIS LTDA",
   cnpj: "30.811.606/0001-78",
-  tagline: "Contabilidade para decisões financeiras precisas e seguras.",
+  tagline:
+    "Assessoria contábil em Triunfo/RS — precisão nos números, proximidade no atendimento.",
+  heroTitle: "Clareza contábil para decidir com segurança",
   phone: {
     display: "(51) 3657-1013",
     href: "tel:+555136571013",
@@ -35,52 +37,123 @@ export const site = {
   hours: "Segunda a Sexta: 8h às 17h",
   instagram: "https://www.instagram.com/deltarscontabilidade/",
   nav: [
-    { name: "Home", href: "/" },
+    { name: "Início", href: "/" },
     { name: "A Delta", href: "/A-DELTA" },
     { name: "Clientes", href: "/Clientes" },
-    { name: "Serviços", href: "/Servicos" },
     { name: "Equipe", href: "/Equipe" },
     { name: "Blog", href: "/Blog" },
-    { name: "Trabalhe Conosco", href: "/Trabalhe-Conosco" },
     { name: "Contato", href: "/Contato" },
   ],
-  services: [
+  servicePillars: [
     {
-      title: "Treinamentos Empresariais",
-      description: "Capacitação e desenvolvimento profissional para sua equipe",
+      title: "O essencial da gestão contábil",
+      items: [
+        "Contabilidade, demonstração e pareceres",
+        "Gestão de folha de pagamento",
+        "Processamento fiscal e legislação",
+        "Gestão societária",
+      ],
     },
     {
-      title: "Consultoria Jurídica",
-      description: "Suporte legal especializado para sua empresa",
+      title: "Tecnologia",
+      items: [
+        "Integração com controle financeiro",
+        "Integração do extrato bancário",
+        "Sistemas de auditoria tributária",
+      ],
     },
     {
-      title: "Ouvidoria",
-      description: "Canal direto para feedback e melhorias",
+      title: "Portal do cliente",
+      items: [
+        "Checklist personalizado para orientar processos",
+        "Envio e recebimento de documentos",
+        "Biblioteca digital para consulta",
+      ],
     },
     {
-      title: "Atendimento Online",
-      description: "Suporte remoto ágil e eficiente",
+      title: "Consultas de relatórios",
+      items: [
+        "Faturamento",
+        "Balancetes, DRE, Razão de contas",
+        "Certidões negativas",
+        "Dashboard e outros",
+      ],
     },
     {
-      title: "Contabilidade e Pareceres",
-      description: "Gestão contábil completa e transparente",
+      title: "Atendimento diferenciado",
+      items: [
+        "Equipe especializada no seu negócio",
+        "WhatsApp para agilidade no atendimento",
+        "Telefone para falar com nossos especialistas",
+      ],
     },
     {
-      title: "Gestão de Folha",
-      description: "Administração eficiente de recursos humanos",
+      title: "Diferenciais da folha de pagamento",
+      items: [
+        "Admissão e simulação de rescisão",
+        "Lançamento de variáveis",
+        "Acesso a recibos de salário",
+        "Arquivo de pagamento personalizado",
+      ],
     },
     {
-      title: "Processamento Fiscal",
-      description: "Conformidade fiscal e tributária",
+      title: "Serviços personalizados",
+      items: [
+        "Diagnóstico da saúde financeira",
+        "Inteligência tributária",
+        "Estudo previdenciário",
+        "Consultorias",
+      ],
     },
     {
-      title: "Gestão Societária",
-      description: "Administração estratégica empresarial",
+      title: "Consultoria avançada",
+      items: [
+        "Contabilidade e apuração fiscal",
+        "Folha de pagamento personalizada",
+        "Acompanhamento estratégico",
+        "Reuniões e dashboards",
+      ],
+    },
+  ],
+  journey: [
+    {
+      step: "1",
+      title: "Conversa inicial",
+      description: "Entendemos o momento da sua empresa e o que precisa ser resolvido.",
     },
     {
-      title: "Consultorias",
-      description: "Soluções personalizadas para seu negócio",
+      step: "2",
+      title: "Transição organizada",
+      description: "Cuidamos da mudança de escritório com calma — você acompanha sem atrito.",
     },
+    {
+      step: "3",
+      title: "Rotina com a Delta",
+      description: "Processos claros, prazos definidos e um canal direto com a equipe.",
+    },
+  ],
+  essence: [
+    {
+      title: "Gestão estratégica",
+      description:
+        "Mais do que números: ajudamos você a tomar decisões com informações ágeis e seguras.",
+    },
+    {
+      title: "Tecnologia",
+      description:
+        "Ferramentas modernas para otimizar processos e manter a contabilidade atualizada com segurança.",
+    },
+    {
+      title: "Atendimento diferenciado",
+      description:
+        "Entendemos as dificuldades do seu negócio e oferecemos suporte próximo e objetivo.",
+    },
+  ],
+  stats: [
+    { value: "", label: "Anos de empresa" },
+    { value: "", label: "Colaboradores" },
+    { value: "", label: "Clientes atendidos" },
+    { value: "", label: "Satisfação" },
   ],
 } as const;
 
