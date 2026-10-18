@@ -12,12 +12,8 @@ export const site = {
   },
   whatsapp: [
     {
-      display: "(51) 98243-7533",
-      href: "https://wa.me/5551982437533",
-    },
-    {
-      display: "(51) 99405-7534",
-      href: "https://wa.me/5551994057534",
+      display: "(51) 9209-6630",
+      href: "https://wa.me/555192096630",
     },
   ],
   email: {
@@ -39,80 +35,60 @@ export const site = {
   nav: [
     { name: "Início", href: "/" },
     { name: "A Delta", href: "/A-DELTA" },
-    { name: "Clientes", href: "/Clientes" },
-    { name: "Equipe", href: "/Equipe" },
-    { name: "Blog", href: "/Blog" },
+    { name: "Serviços", href: "/Servicos" },
     { name: "Contato", href: "/Contato" },
   ],
-  servicePillars: [
+  specialties: [
     {
-      title: "O essencial da gestão contábil",
-      items: [
-        "Contabilidade, demonstração e pareceres",
-        "Gestão de folha de pagamento",
-        "Processamento fiscal e legislação",
-        "Gestão societária",
-      ],
+      title: "Contabilidade para empresas",
+      description:
+        "Empresas físicas ou online, de produtos ou serviços — assessoria contábil e fiscal eficiente para o seu negócio crescer com segurança.",
     },
     {
-      title: "Tecnologia",
-      items: [
-        "Integração com controle financeiro",
-        "Integração do extrato bancário",
-        "Sistemas de auditoria tributária",
-      ],
+      title: "Contabilidade para pessoas físicas",
+      description:
+        "Pessoa física ou profissional liberal: mantenha-se em dia com as obrigações contábeis e fiscais e foque no que importa no seu dia a dia.",
+    },
+  ],
+  services: [
+    {
+      title: "Contabilidade",
+      description:
+        "Consultoria e execução completa para a gestão contábil e planejamento tributário da sua empresa.",
     },
     {
-      title: "Portal do cliente",
-      items: [
-        "Checklist personalizado para orientar processos",
-        "Envio e recebimento de documentos",
-        "Biblioteca digital para consulta",
-      ],
+      title: "Financeiro",
+      description: "Terceirização do financeiro para organizar o fluxo de caixa e a rotina da empresa.",
     },
     {
-      title: "Consultas de relatórios",
-      items: [
-        "Faturamento",
-        "Balancetes, DRE, Razão de contas",
-        "Certidões negativas",
-        "Dashboard e outros",
-      ],
+      title: "Fiscal",
+      description:
+        "Consultoria e execução completa para obrigações fiscais e planejamento fiscal.",
     },
     {
-      title: "Atendimento diferenciado",
-      items: [
-        "Equipe especializada no seu negócio",
-        "WhatsApp para agilidade no atendimento",
-        "Telefone para falar com nossos especialistas",
-      ],
+      title: "Folha de pagamento",
+      description: "Elaboração e processamento completo de folha de pagamento e encargos.",
     },
     {
-      title: "Diferenciais da folha de pagamento",
-      items: [
-        "Admissão e simulação de rescisão",
-        "Lançamento de variáveis",
-        "Acesso a recibos de salário",
-        "Arquivo de pagamento personalizado",
-      ],
+      title: "Abertura de empresa",
+      description:
+        "Orientação para MEI, ME, LTDA, S/A e holdings — da escolha do regime à formalização.",
     },
     {
-      title: "Serviços personalizados",
-      items: [
-        "Diagnóstico da saúde financeira",
-        "Inteligência tributária",
-        "Estudo previdenciário",
-        "Consultorias",
-      ],
+      title: "Registro de marca",
+      description: "Proteja os interesses da empresa. Saiba o que é preciso para fazer o registro.",
     },
     {
-      title: "Consultoria avançada",
-      items: [
-        "Contabilidade e apuração fiscal",
-        "Folha de pagamento personalizada",
-        "Acompanhamento estratégico",
-        "Reuniões e dashboards",
-      ],
+      title: "Imposto de renda PF",
+      description: "Ajuda completa para declarar o imposto de renda de pessoa física.",
+    },
+    {
+      title: "Planejamento tributário",
+      description: "Reduza de forma legal a carga tributária e evite penalidades.",
+    },
+    {
+      title: "Regularização societária",
+      description: "Agilidade nos processos societários, com praticidade e menor custo.",
     },
   ],
   journey: [

@@ -43,21 +43,21 @@ export default function Navbar({ transparentOnTop = false }: NavbarProps) {
           <Image
             src="/images/logodelta.png"
             alt={site.fullName}
-            width={40}
-            height={40}
-            className="h-10 w-10 object-contain"
+            width={48}
+            height={48}
+            className="h-12 w-12 object-contain"
             priority
           />
           <div className="leading-none">
             <span
-              className={`font-display block text-[15px] font-semibold tracking-[0.12em] ${
+              className={`font-display block text-2xl font-bold tracking-[0.08em] sm:text-[1.75rem] ${
                 light ? "text-white" : "text-azul-delta"
               }`}
             >
               DELTA
             </span>
             <span
-              className={`mt-0.5 hidden text-[10px] tracking-wide sm:block ${
+              className={`mt-1 hidden text-[11px] tracking-wide sm:block ${
                 light ? "text-white/60" : "text-delta-mute"
               }`}
             >
@@ -127,10 +127,10 @@ export default function Navbar({ transparentOnTop = false }: NavbarProps) {
         leaveTo="opacity-0"
       >
         <div className="fixed inset-0 z-[150] lg:hidden">
-          <div className="absolute inset-0 bg-[#0a1f4d]" />
+          <div className="absolute inset-0 bg-azul-delta-dark" />
           <div className="relative flex min-h-full flex-col px-6 pb-12 pt-6">
             <div className="flex items-center justify-between">
-              <span className="font-display text-lg font-semibold tracking-[0.14em] text-white">
+              <span className="font-display text-2xl font-bold tracking-[0.1em] text-white">
                 DELTA
               </span>
               <button

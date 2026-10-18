@@ -4,11 +4,11 @@ import { primaryWhatsApp, site } from "@/lib/site";
 
 export default function ContactTeaser() {
   return (
-    <section className="border-t border-slate-200 bg-white py-24 sm:py-28">
+    <section className="bg-delta-mist py-24 sm:py-28">
       <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <SectionHeading
-            index="07"
+            index="05"
             eyebrow="Contato"
             title="Vamos conversar"
             description="Conte um pouco da sua empresa. Retornamos com uma proposta objetiva."

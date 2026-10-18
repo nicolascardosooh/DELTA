@@ -16,8 +16,8 @@ export default function HeroSection() {
         priority
         quality={90}
       />
-      <div className="absolute inset-0 bg-[#0a1f4d]/55" />
-      <div className="absolute inset-0 bg-gradient-to-t from-azul-delta via-azul-delta/50 to-transparent" />
+      <div className="absolute inset-0 bg-azul-delta-dark/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-azul-delta via-azul-delta/45 to-transparent" />
 
       {/* Brand watermark — Delta signature */}
       <div

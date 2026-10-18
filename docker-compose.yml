@@ -1,0 +1,23 @@
+# Sites de clientes: porta de host 5000+.
+# 3000-3010 = homologação, 4000-4006 = produção TechPozz. Não reutilizar.
+services:
+  web:
+    build:
+      context: .
+      args:
+        SITE_ACCESS_PASSWORD: ${SITE_ACCESS_PASSWORD}
+    container_name: delta_web
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      PORT: "5000"
+      HOSTNAME: "0.0.0.0"
+      SITE_ACCESS_PASSWORD: ${SITE_ACCESS_PASSWORD}
+    restart: unless-stopped
+    networks:
+      - shared_net
+
+networks:
+  shared_net:
+    external: true

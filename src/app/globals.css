@@ -4,12 +4,14 @@
 @theme {
   --font-sans: "DM Sans", sans-serif;
   --font-display: "Space Grotesk", sans-serif;
-  --color-azul-delta: #1e4493;
-  --color-azul-delta-dark: #163570;
-  --color-azul-delta-light: #2a56b0;
-  --color-delta-ink: #0f172a;
-  --color-delta-mute: #64748b;
-  --color-delta-mist: #f4f6f9;
+  /* Azul Delta com cinza mesclado — mais sóbrio e corporativo */
+  --color-azul-delta: #3a4f6f;
+  --color-azul-delta-dark: #2a3a54;
+  --color-azul-delta-light: #5a6f8f;
+  --color-delta-ink: #1c2430;
+  --color-delta-mute: #6b7280;
+  --color-delta-mist: #eef0f3;
+  --color-delta-gray: #8b93a1;
 }
 
 html {
@@ -18,7 +20,7 @@ html {
 
 body {
   font-family: "DM Sans", sans-serif;
-  color: #0f172a;
+  color: #1c2430;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
@@ -45,7 +47,7 @@ body {
   border-radius: 50%;
   width: 52px;
   height: 52px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 8px 24px rgba(28, 36, 48, 0.18);
 }
 
 ::-webkit-scrollbar {
@@ -57,7 +59,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e4493;
+  background: #3a4f6f;
 }
 
 body.menu-open {

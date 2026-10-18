@@ -37,7 +37,7 @@ function GateForm() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#0a1f4d] px-4">
+    <div className="flex min-h-screen items-center justify-center bg-azul-delta-dark px-4">
       <div className="w-full max-w-sm">
         <div className="mb-10 text-center">
           <Image
@@ -87,7 +87,7 @@ export default function GatePage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen items-center justify-center bg-[#0a1f4d] text-white/60">
+        <div className="flex min-h-screen items-center justify-center bg-azul-delta-dark text-white/60">
           Carregando…
         </div>
       }

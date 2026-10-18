@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export default function JourneySection() {
   return (
-    <section className="bg-delta-mist py-24 sm:py-28">
+    <section className="bg-white py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           index="02"

@@ -2,6 +2,30 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
+import {
+  FaCalculator,
+  FaChartLine,
+  FaFileInvoiceDollar,
+  FaUsers,
+  FaBuilding,
+  FaTrademark,
+  FaFileAlt,
+  FaBalanceScale,
+  FaHandshake,
+} from "react-icons/fa";
+import type { IconType } from "react-icons";
+
+const icons: IconType[] = [
+  FaCalculator,
+  FaChartLine,
+  FaFileInvoiceDollar,
+  FaUsers,
+  FaBuilding,
+  FaTrademark,
+  FaFileAlt,
+  FaBalanceScale,
+  FaHandshake,
+];
 
 export default function ServicosPage() {
   return (
@@ -9,35 +33,40 @@ export default function ServicosPage() {
       <Navbar />
       <main className="pt-32 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="font-display text-xs font-semibold tracking-[0.2em] text-azul-delta/60">
-            Soluções
+          <p className="font-display text-xs font-semibold tracking-[0.2em] text-azul-delta/70">
+            Serviços
           </p>
           <h1 className="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-tight text-delta-ink">
-            O que fazemos pela sua empresa
+            O que fazemos
           </h1>
           <p className="mt-4 max-w-xl text-lg text-delta-mute">
-            Contabilidade, fiscal, folha e consultoria — com acompanhamento próximo.
+            Soluções para você ou o seu negócio — contabilidade, fiscal, folha e muito mais.
           </p>
 
-          <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
-            {site.servicePillars.map((pillar, i) => (
-              <article
-                key={pillar.title}
-                className="grid gap-4 py-8 sm:grid-cols-[auto_1fr_1.2fr] sm:gap-8"
-              >
-                <span className="font-display text-sm font-semibold text-azul-delta/40">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h2 className="font-display text-lg font-semibold text-delta-ink">{pillar.title}</h2>
-                <ul className="grid gap-2 sm:grid-cols-2">
-                  {pillar.items.map((item) => (
-                    <li key={item} className="text-sm text-delta-mute">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {site.specialties.map((item) => (
+              <article key={item.title} className="border border-slate-200 bg-delta-mist p-7">
+                <h2 className="font-display text-xl font-semibold text-delta-ink">{item.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-delta-mute">{item.description}</p>
               </article>
             ))}
+          </div>
+
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {site.services.map((service, i) => {
+              const Icon = icons[i] ?? FaCalculator;
+              return (
+                <article key={service.title} className="border border-slate-200 bg-white p-7">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center bg-azul-delta/10 text-azul-delta">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h2 className="font-display text-lg font-semibold text-delta-ink">
+                    {service.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-delta-mute">{service.description}</p>
+                </article>
+              );
+            })}
           </div>
 
           <div className="mt-14">
