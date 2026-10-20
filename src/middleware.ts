@@ -12,6 +12,7 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/gate") ||
     pathname.startsWith("/api/gate") ||
+    pathname.startsWith("/api/contact") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon") ||
     pathname.match(/\.(.*)$/)

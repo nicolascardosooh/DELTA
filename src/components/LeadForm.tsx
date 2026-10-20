@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { site } from "@/lib/site";
 
 type LeadFormProps = {
   title?: string;
@@ -10,9 +9,11 @@ type LeadFormProps = {
 
 export default function LeadForm({
   title = "Solicitar orçamento",
-  subtitle = "Preencha os campos abaixo. Abrimos seu e-mail com a mensagem pronta para enviar.",
+  subtitle = "Preencha os campos abaixo. Enviamos sua solicitação por e-mail.",
 }: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -24,24 +25,39 @@ export default function LeadForm({
     message: "",
   });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Quero ser cliente — ${form.company || form.name}`);
-    const body = encodeURIComponent(
-      [
-        `Nome: ${form.name}`,
-        `Empresa: ${form.company}`,
-        `CNPJ: ${form.cnpj || "—"}`,
-        `E-mail: ${form.email || "—"}`,
-        `Telefone: ${form.phone}`,
-        `Regime: ${form.regime || "—"}`,
-        `Funcionários: ${form.employees || "—"}`,
-        "",
-        form.message,
-      ].join("\n")
-    );
-    window.location.href = `${site.receiptEmail.href}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setError("");
+    setSubmitted(false);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error || "Não foi possível enviar. Tente novamente.");
+        setLoading(false);
+        return;
+      }
+      setSubmitted(true);
+      setForm({
+        name: "",
+        company: "",
+        cnpj: "",
+        email: "",
+        phone: "",
+        regime: "",
+        employees: "",
+        message: "",
+      });
+    } catch {
+      setError("Não foi possível enviar. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const field =
@@ -53,7 +69,12 @@ export default function LeadForm({
       <p className="mt-2 text-sm leading-relaxed text-delta-mute">{subtitle}</p>
       {submitted && (
         <p className="mt-4 rounded-md border border-azul-delta/30 bg-azul-delta/5 px-4 py-3 text-sm text-azul-delta">
-          Abrindo seu cliente de e-mail…
+          Solicitação enviada com sucesso. Em breve entraremos em contato.
+        </p>
+      )}
+      {error && (
+        <p className="mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
         </p>
       )}
       <form onSubmit={onSubmit} className="mt-8 space-y-5">
@@ -147,9 +168,10 @@ export default function LeadForm({
         </label>
         <button
           type="submit"
-          className="w-full rounded-md bg-azul-delta py-3.5 text-sm font-semibold text-white transition hover:bg-azul-delta-dark"
+          disabled={loading}
+          className="w-full rounded-md bg-azul-delta py-3.5 text-sm font-semibold text-white transition hover:bg-azul-delta-dark disabled:opacity-60"
         >
-          Enviar solicitação
+          {loading ? "Enviando…" : "Enviar solicitação"}
         </button>
       </form>
     </div>

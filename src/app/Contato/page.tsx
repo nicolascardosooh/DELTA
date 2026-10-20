@@ -23,7 +23,7 @@ export default function ContatoPage() {
           <div className="mt-14 grid gap-12 lg:grid-cols-2">
             <LeadForm
               title="Quero ser cliente"
-              subtitle="Dados essenciais da empresa. A solicitação abre no seu e-mail para envio."
+              subtitle="Dados essenciais da empresa. A solicitação é enviada por e-mail automaticamente."
             />
             <div className="space-y-8">
               <dl className="space-y-5 text-sm">
