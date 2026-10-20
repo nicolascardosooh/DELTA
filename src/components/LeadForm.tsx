@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { site } from "@/lib/site";
+import { whatsappWithText } from "@/lib/site";
 
 type LeadFormProps = {
   title?: string;
@@ -10,7 +10,7 @@ type LeadFormProps = {
 
 export default function LeadForm({
   title = "Solicitar orçamento",
-  subtitle = "Preencha os campos abaixo. Abrimos seu e-mail com a mensagem pronta para enviar.",
+  subtitle = "Preencha os campos abaixo. A mensagem abre no WhatsApp da Delta.",
 }: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
@@ -26,21 +26,22 @@ export default function LeadForm({
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Quero ser cliente — ${form.company || form.name}`);
-    const body = encodeURIComponent(
-      [
-        `Nome: ${form.name}`,
-        `Empresa: ${form.company}`,
-        `CNPJ: ${form.cnpj}`,
-        `E-mail: ${form.email}`,
-        `Telefone: ${form.phone}`,
-        `Regime: ${form.regime}`,
-        `Funcionários: ${form.employees}`,
-        "",
-        form.message,
-      ].join("\n")
-    );
-    window.location.href = `${site.email.href}?subject=${subject}&body=${body}`;
+    const text = [
+      `*Quero ser cliente — Delta*`,
+      ``,
+      `Nome: ${form.name}`,
+      `Empresa: ${form.company}`,
+      `CNPJ: ${form.cnpj || "—"}`,
+      `E-mail: ${form.email || "—"}`,
+      `Telefone: ${form.phone}`,
+      `Regime: ${form.regime || "—"}`,
+      `Funcionários: ${form.employees || "—"}`,
+      form.message ? `\n${form.message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.open(whatsappWithText(text), "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -53,7 +54,7 @@ export default function LeadForm({
       <p className="mt-2 text-sm leading-relaxed text-delta-mute">{subtitle}</p>
       {submitted && (
         <p className="mt-4 rounded-md border border-azul-delta/30 bg-azul-delta/5 px-4 py-3 text-sm text-azul-delta">
-          Abrindo seu cliente de e-mail…
+          Abrindo o WhatsApp…
         </p>
       )}
       <form onSubmit={onSubmit} className="mt-8 space-y-5">
@@ -90,9 +91,8 @@ export default function LeadForm({
             />
           </label>
           <label className="block text-sm font-medium text-delta-ink">
-            E-mail *
+            E-mail
             <input
-              required
               type="email"
               placeholder="seu@email.com"
               className={field}
@@ -150,7 +150,7 @@ export default function LeadForm({
           type="submit"
           className="w-full rounded-md bg-azul-delta py-3.5 text-sm font-semibold text-white transition hover:bg-azul-delta-dark"
         >
-          Enviar solicitação
+          Enviar pelo WhatsApp
         </button>
       </form>
     </div>

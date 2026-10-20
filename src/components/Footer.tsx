@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
-import { site } from "@/lib/site";
+import { primaryWhatsApp, site } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -19,7 +19,7 @@ export default function Footer() {
               />
               <div>
                 <p className="font-display text-lg font-semibold tracking-[0.14em]">DELTA</p>
-                <p className="text-[11px] text-white/50">Assessoria Contábil</p>
+                <p className="text-[11px] text-white/50">Serviços Contábeis</p>
               </div>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
@@ -77,13 +77,13 @@ export default function Footer() {
               <li>{site.address.line1}</li>
               <li>{site.address.line2}</li>
               <li>
-                <a href={site.phone.href} className="hover:text-white">
-                  {site.phone.display}
-                </a>
-              </li>
-              <li>
-                <a href={site.email.href} className="hover:text-white">
-                  {site.email.display}
+                <a
+                  href={primaryWhatsApp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
+                  WhatsApp {site.whatsapp[0].display}
                 </a>
               </li>
               <li className="text-white/45">{site.hours}</li>

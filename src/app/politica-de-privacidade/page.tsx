@@ -248,12 +248,14 @@ export default function PoliticaPrivacidadePage() {
             <Link href="/Contato" className="font-medium text-azul-delta hover:underline">
               Página de contato
             </Link>{" "}
-            ou{" "}
+            ou WhatsApp{" "}
             <a
-              href={`mailto:${site.privacyEmail}`}
+              href={site.whatsapp[0].href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-medium text-azul-delta hover:underline"
             >
-              {site.privacyEmail}
+              {site.whatsapp[0].display}
             </a>
             .
           </p>

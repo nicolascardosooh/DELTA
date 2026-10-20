@@ -1,36 +1,27 @@
 export const site = {
   name: "Delta",
-  fullName: "Delta Assessoria Contábil",
-  legalName: "DELTA SERVICOS CONTABEIS LTDA",
+  fullName: "Delta Serviços Contábeis LTDA",
+  legalName: "Delta Serviços Contábeis LTDA",
   cnpj: "30.811.606/0001-78",
   tagline:
     "Assessoria contábil em Triunfo/RS — precisão nos números, proximidade no atendimento.",
   heroTitle: "Clareza contábil para decidir com segurança",
-  phone: {
-    display: "(51) 3657-1013",
-    href: "tel:+555136571013",
-  },
   whatsapp: [
     {
       display: "(51) 9209-6630",
       href: "https://wa.me/555192096630",
     },
   ],
-  email: {
-    display: "contato@deltars.com.br",
-    href: "mailto:contato@deltars.com.br",
-  },
-  privacyEmail: "GERENCIA@DELTARS.COM.BR",
   address: {
-    line1: "Estrada BR 386, KM 410 - Vendinha",
+    line1: "Estrada BR 386, KM 411 - Vendinha",
     line2: "Triunfo - RS, 95840-000",
-    full: "Estrada BR 386, KM 410 - Vendinha, Triunfo-RS, 95840-000",
+    full: "Estrada BR 386, KM 411 - Vendinha, Triunfo-RS, 95840-000",
     mapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Estrada+BR+386+KM+410+Vendinha+Triunfo+RS",
+      "https://www.google.com/maps/search/?api=1&query=Estrada+BR+386+KM+411+Vendinha+Triunfo+RS",
     mapsEmbed:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.2!2d-51.719258!3d-29.929528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951973ad52ba06ef%3A0x7405e2d4c26c456b!2sBR-386%2C%20km%20410%20-%20Vendinha%2C%20Triunfo%20-%20RS!5e0!3m2!1spt-BR!2sbr!4v1712943012345",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.2!2d-51.719258!3d-29.929528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951973ad52ba06ef%3A0x7405e2d4c26c456b!2sBR-386%2C%20km%20411%20-%20Vendinha%2C%20Triunfo%20-%20RS!5e0!3m2!1spt-BR!2sbr!4v1712943012345",
   },
-  hours: "Segunda a Sexta: 8h às 17h",
+  hours: "Segunda a Sexta: 8h às 12h e 13h às 17h",
   instagram: "https://www.instagram.com/deltarscontabilidade/",
   nav: [
     { name: "Início", href: "/" },
@@ -134,3 +125,7 @@ export const site = {
 } as const;
 
 export const primaryWhatsApp = site.whatsapp[0].href;
+
+export function whatsappWithText(text: string) {
+  return `${primaryWhatsApp}?text=${encodeURIComponent(text)}`;
+}

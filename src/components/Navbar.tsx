@@ -61,7 +61,7 @@ export default function Navbar({ transparentOnTop = false }: NavbarProps) {
                 light ? "text-white/60" : "text-delta-mute"
               }`}
             >
-              Assessoria Contábil
+              Serviços Contábeis
             </span>
           </div>
         </Link>

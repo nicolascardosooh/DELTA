@@ -19,14 +19,6 @@ export default function ContactTeaser() {
               <dd className="mt-1 text-delta-ink">{site.address.full}</dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-[0.14em] text-delta-mute">Telefone</dt>
-              <dd className="mt-1">
-                <a href={site.phone.href} className="text-delta-ink hover:text-azul-delta">
-                  {site.phone.display}
-                </a>
-              </dd>
-            </div>
-            <div>
               <dt className="text-xs uppercase tracking-[0.14em] text-delta-mute">WhatsApp</dt>
               <dd className="mt-1">
                 <a
@@ -40,12 +32,8 @@ export default function ContactTeaser() {
               </dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-[0.14em] text-delta-mute">E-mail</dt>
-              <dd className="mt-1">
-                <a href={site.email.href} className="text-delta-ink hover:text-azul-delta">
-                  {site.email.display}
-                </a>
-              </dd>
+              <dt className="text-xs uppercase tracking-[0.14em] text-delta-mute">Horário</dt>
+              <dd className="mt-1 text-delta-ink">{site.hours}</dd>
             </div>
           </dl>
         </div>

@@ -17,27 +17,19 @@ export default function ContatoPage() {
             Vamos conversar
           </h1>
           <p className="mt-4 max-w-xl text-lg text-delta-mute">
-            Preencha o formulário ou fale direto pelos canais abaixo.
+            Preencha o formulário ou fale direto pelo WhatsApp.
           </p>
 
           <div className="mt-14 grid gap-12 lg:grid-cols-2">
             <LeadForm
               title="Quero ser cliente"
-              subtitle="Dados essenciais da empresa. Enviamos a solicitação para o e-mail da Delta."
+              subtitle="Dados essenciais da empresa. A solicitação abre no WhatsApp da Delta."
             />
             <div className="space-y-8">
               <dl className="space-y-5 text-sm">
                 <div>
                   <dt className="text-xs uppercase tracking-[0.14em] text-delta-mute">Endereço</dt>
                   <dd className="mt-1 text-delta-ink">{site.address.full}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.14em] text-delta-mute">Telefone</dt>
-                  <dd className="mt-1">
-                    <a href={site.phone.href} className="hover:text-azul-delta">
-                      {site.phone.display}
-                    </a>
-                  </dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-[0.14em] text-delta-mute">WhatsApp</dt>
@@ -53,14 +45,6 @@ export default function ContatoPage() {
                         {w.display}
                       </a>
                     ))}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.14em] text-delta-mute">E-mail</dt>
-                  <dd className="mt-1">
-                    <a href={site.email.href} className="hover:text-azul-delta">
-                      {site.email.display}
-                    </a>
                   </dd>
                 </div>
                 <div>

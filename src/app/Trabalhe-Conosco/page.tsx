@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { site } from "@/lib/site";
+import { whatsappWithText } from "@/lib/site";
 
 const benefits = [
   {
@@ -36,11 +36,19 @@ export default function TrabalhePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Currículo — ${formData.name || "Candidato"}`);
-    const body = encodeURIComponent(
-      `Nome: ${formData.name}\nE-mail: ${formData.email}\nTelefone: ${formData.phone}\nÁrea de interesse: ${formData.area}\n\n${formData.message}\n\n(Anexe o currículo ao e-mail.)`
-    );
-    window.location.href = `${site.email.href}?subject=${subject}&body=${body}`;
+    const text = [
+      `*Currículo — Delta*`,
+      ``,
+      `Nome: ${formData.name}`,
+      `E-mail: ${formData.email}`,
+      `Telefone: ${formData.phone}`,
+      `Área: ${formData.area || "—"}`,
+      formData.message ? `\n${formData.message}` : "",
+      `\n(Envio o currículo em seguida neste chat.)`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+    window.open(whatsappWithText(text), "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -76,12 +84,12 @@ export default function TrabalhePage() {
             <div>
               <h2 className="mb-4 text-2xl font-semibold text-slate-900">Envie seu currículo</h2>
               <p className="mb-6 text-sm leading-relaxed text-slate-600">
-                Preencha o formulário. Você será redirecionado ao e-mail para anexar o
-                currículo e concluir o envio para {site.email.display}.
+                Preencha o formulário. A mensagem abre no WhatsApp da Delta — envie o currículo
+                em seguida no chat.
               </p>
               {submitted && (
                 <p className="mb-4 border border-azul-delta/30 bg-azul-delta/5 px-4 py-3 text-sm text-azul-delta">
-                  Abrindo seu cliente de e-mail… Anexe o currículo antes de enviar.
+                  Abrindo o WhatsApp… Envie o currículo na conversa.
                 </p>
               )}
             </div>
@@ -149,7 +157,7 @@ export default function TrabalhePage() {
                 type="submit"
                 className="w-full bg-azul-delta py-3 text-sm font-semibold text-white transition hover:bg-azul-delta-dark"
               >
-                Continuar pelo e-mail
+                Continuar pelo WhatsApp
               </button>
             </form>
           </div>
