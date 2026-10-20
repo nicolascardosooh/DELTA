@@ -6,6 +6,11 @@ export const site = {
   tagline:
     "Assessoria contábil em Triunfo/RS — precisão nos números, proximidade no atendimento.",
   heroTitle: "Clareza contábil para decidir com segurança",
+  /** Destino dos formulários de contato (teste — trocar depois se necessário). */
+  receiptEmail: {
+    display: "nicolascardoso1989@gmail.com",
+    href: "mailto:nicolascardoso1989@gmail.com",
+  },
   whatsapp: [
     {
       display: "(51) 9209-6630",
