@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { createTransport, getMailConfig } from "@/lib/mail";
+import { buildContactEmail, getDeltaLogoAttachment } from "@/lib/contact-email";
+import { site } from "@/lib/site";
 
 type ContactBody = {
   name?: string;
@@ -31,28 +33,31 @@ export async function POST(request: Request) {
     );
   }
 
+  const lead = {
+    name,
+    company,
+    cnpj: body.cnpj?.trim() || "",
+    email: body.email?.trim() || "",
+    phone,
+    regime: body.regime?.trim() || "",
+    employees: body.employees?.trim() || "",
+    message: body.message?.trim() || "",
+  };
+
   try {
     const { from, to } = getMailConfig();
     const transport = createTransport();
-
-    const lines = [
-      `Nome: ${name}`,
-      `Empresa: ${company}`,
-      `CNPJ: ${body.cnpj?.trim() || "—"}`,
-      `E-mail do lead: ${body.email?.trim() || "—"}`,
-      `Telefone: ${phone}`,
-      `Regime: ${body.regime?.trim() || "—"}`,
-      `Funcionários: ${body.employees?.trim() || "—"}`,
-      "",
-      body.message?.trim() || "",
-    ].join("\n");
+    const { subject, text, html } = buildContactEmail(lead);
+    const logo = getDeltaLogoAttachment();
 
     await transport.sendMail({
-      from: `"Delta Site" <${from}>`,
+      from: `"${site.name}" <${from}>`,
       to,
-      replyTo: body.email?.trim() || undefined,
-      subject: `Quero ser cliente — ${company}`,
-      text: lines,
+      replyTo: lead.email || undefined,
+      subject,
+      text,
+      html,
+      attachments: logo ? [logo] : [],
     });
 
     return NextResponse.json({ ok: true });
