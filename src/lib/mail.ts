@@ -6,7 +6,7 @@ export function getMailConfig() {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const from = process.env.EMAIL_FROM || user;
-  const to = process.env.CONTACT_TO || "nicolascardoso1989@gmail.com";
+  const to = process.env.CONTACT_TO || "contato@deltars.com.br";
 
   if (!host || !user || !pass || !from) {
     throw new Error("SMTP não configurado (SMTP_HOST, SMTP_USER, SMTP_PASS, EMAIL_FROM).");

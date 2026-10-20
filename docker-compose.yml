@@ -19,7 +19,7 @@ services:
       SMTP_USER: ${SMTP_USER}
       SMTP_PASS: ${SMTP_PASS}
       EMAIL_FROM: ${EMAIL_FROM}
-      CONTACT_TO: ${CONTACT_TO:-nicolascardoso1989@gmail.com}
+      CONTACT_TO: ${CONTACT_TO:-contato@deltars.com.br}
     restart: unless-stopped
     networks:
       - shared_net
