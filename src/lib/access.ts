@@ -3,14 +3,11 @@ export const ACCESS_COOKIE_VALUE = "delta-preview-ok";
 
 /**
  * Senha de pré-visualização.
- * Sem a variável, mantém a senha local de preview.
- * SITE_ACCESS_PASSWORD vazio publica o site sem a tela de senha.
+ * Vazio = site público (sem /gate).
+ * Defina SITE_ACCESS_PASSWORD no .env apenas se quiser fechar o preview de novo.
  */
 export function getSitePassword() {
-  if (process.env.SITE_ACCESS_PASSWORD !== undefined) {
-    return process.env.SITE_ACCESS_PASSWORD;
-  }
-  return "@D3LT4@0910";
+  return process.env.SITE_ACCESS_PASSWORD || "";
 }
 
 export const ACCESS_MAX_AGE = 60 * 60 * 24 * 30; // 30 dias

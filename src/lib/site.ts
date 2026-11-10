@@ -116,12 +116,6 @@ export const site = {
         "Entendemos as dificuldades do seu negócio e oferecemos suporte próximo e objetivo.",
     },
   ],
-  stats: [
-    { value: "", label: "Anos de empresa" },
-    { value: "", label: "Colaboradores" },
-    { value: "", label: "Clientes atendidos" },
-    { value: "", label: "Satisfação" },
-  ],
 } as const;
 
 export const primaryWhatsApp = site.whatsapp[0].href;

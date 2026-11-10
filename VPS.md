@@ -17,7 +17,7 @@ Site da Delta Assessoria (`deltars.com.br`). Este arquivo é a referência para 
 | Rede Docker | `shared_net` (externa, a mesma do nginx) |
 | Compose | `/root/sites/delta/docker-compose.yml` |
 | Senha do site | arquivo `/root/sites/delta/.env`, chave `SITE_ACCESS_PASSWORD` |
-| Valor atual da senha | `@D3LT4@0910` |
+| Valor atual da senha | *(vazio — site público)* |
 
 Não usar as faixas **3000–3010** (homologação) nem **4000–4006** (produção TechPozz). Sites de clientes começam em **5000**.
 
@@ -65,16 +65,18 @@ docker exec nginx-nginx-1 nginx -t && docker exec nginx-nginx-1 nginx -s reload
 
 A variável é `SITE_ACCESS_PASSWORD`. O middleware do Next.js grava o valor **no build**. Mudar só o `.env` e reiniciar o container não altera a senha: é preciso `docker compose up -d --build`.
 
-- `.env` vazio publica o site sem a tela `/gate`.
-- Sem a variável, o código usa o padrão `@D3LT4@0910`.
+- Site **público** com `SITE_ACCESS_PASSWORD=` (vazio) ou sem a chave.
+- Para fechar de novo o preview, coloque uma senha no `.env` e faça rebuild.
 - Em produção o arquivo é `/root/sites/delta/.env` (permissão 600). Esse arquivo não entra na imagem (está no `.dockerignore`). O compose lê o `.env` e passa o valor como build-arg e como variável de runtime.
 
 ## Subir uma versão que já está no GitHub
 
-Na VPS, preservando a senha:
+Na VPS (mantém SMTP e zera a senha de preview):
 
 ```bash
 cp /root/sites/delta/.env /tmp/delta.env
+sed -i 's/^SITE_ACCESS_PASSWORD=.*/SITE_ACCESS_PASSWORD=/' /tmp/delta.env
+grep -q '^SITE_ACCESS_PASSWORD=' /tmp/delta.env || echo 'SITE_ACCESS_PASSWORD=' >> /tmp/delta.env
 rm -rf /root/sites/delta-new
 git clone --depth 1 https://github.com/nicolascardosooh/DELTA.git /root/sites/delta-new
 cp /tmp/delta.env /root/sites/delta-new/.env
@@ -95,7 +97,7 @@ Conferir:
 
 ```bash
 git -C /root/sites/delta rev-parse --short HEAD
-curl -s -o /dev/null -w "%{http_code} %{redirect_url}\n" -H "Host: deltars.com.br" http://127.0.0.1/
+curl -s -o /dev/null -w "%{http_code} %{redirect_url}\n" -H "Host: deltars.com.br" http://127.0.0.1:5000/
 ```
 
-Sem cookie, a home responde **307** para `/gate?next=/`. A senha certa no `POST /api/gate` responde `{"ok":true}`.
+Com senha vazia, a home responde **200** (sem redirect para `/gate`).

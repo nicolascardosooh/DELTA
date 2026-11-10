@@ -8,7 +8,7 @@ export default function ContactTeaser() {
       <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <SectionHeading
-            index="05"
+            index="04"
             eyebrow="Contato"
             title="Vamos conversar"
             description="Conte um pouco da sua empresa. Retornamos com uma proposta objetiva."
